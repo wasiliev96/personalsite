@@ -1,0 +1,62 @@
+:root {
+  --fontface_primary: Roboto;
+  --font_base: 16px;
+  --line_height: 1.5em;
+
+  --color_main: #819cff;
+  --color_secondary: #efeaf5;
+  --color_accent: #6e8aef;
+  --color_text: #7c7c7c;
+
+  --transition_base: 0.35s;
+  --transition_short: 0.15s;
+  --transition_long: 0.55s;
+}
+// hide scrollbar
+// html {
+//   overflow: scroll;
+//   overflow-x: hidden;
+// }
+// ::-webkit-scrollbar {
+//   width: 0px; /* Remove scrollbar space */
+//   background: transparent; /* Optional: just make scrollbar invisible */
+// }
+// /* Optional: show position indicator in red */
+// ::-webkit-scrollbar-thumb {
+//   background: #ff0000;
+// }
+body {
+  background-color: var(--color_secondary);
+  color: var(--color_text);
+}
+body,
+button,
+a,
+input {
+  font-family: var(--fontface_primary);
+  font-size: var(--font_base);
+}
+button,
+a {
+  cursor: pointer;
+}
+html {
+  font-family: var(--fontface_primary);
+  line-height: var(--line_height);
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  user-select: none;
+}
+*:focus {
+  outline: none;
+}
