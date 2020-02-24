@@ -1,13 +1,12 @@
 <template>
   <div class="wrapper">
-    <slot />
-    <nuxt />
+    <slot/>
+    <nuxt/>
   </div>
 </template>
 <style lang="scss" scoped>
-.wrapper {
-  width: calc(100vw - 360px);
-  margin-left: 340px;
-  flex-grow: 1;
-}
+  .wrapper {
+    margin: 100px 50px 0 450px;
+    flex-grow: 1;
+  }
 </style>

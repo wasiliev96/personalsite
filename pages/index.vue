@@ -1,41 +1,39 @@
 <template>
-  <div class="gallery">
-    <div class="row">
-      <ZCard url="https://picsum.photos/480/320" />
-      <ZCard url="https://picsum.photos/480/322" />
-      <ZCard url="https://picsum.photos/480/321" />
-    </div>
-    <div class="row">
-      <ZCard url="https://picsum.photos/480/321" />
-      <ZCard url="https://picsum.photos/480/321?grayscale" />
-      <ZCard url="https://picsum.photos/480/321?blur=1" />
-    </div>
-    <div class="row">
-      <ZCard url="https://picsum.photos/480/322?blur=1" />
-      <ZCard url="https://picsum.photos/480/322" />
-      <ZCard url="https://picsum.photos/480/322?grayscale" />
-    </div>
-    <div class="row">
-      <ZCard url="https://picsum.photos/480/323?grayscale" />
-      <ZCard url="https://picsum.photos/480/323?blur=1" />
-      <ZCard url="https://picsum.photos/480/323" />
+  <div class="about">
+    <h1 class="title">About</h1>
+    <div class="text">
+      <p>
+        Есть много вариантов Lorem Ipsum, но большинство из них имеет не всегда приемлемые модификации, например,
+        юмористические вставки или слова, которые даже.Есть много вариантов Lorem Ipsum, но большинство из них имеет не
+        всегда приемлемые модификации, например, юмористические вставки или слова, которые даже.
+      </p>
+      <br>
+      <p>
+        Есть много вариантов Lorem Ipsum, но большинство из них имеет не всегда приемлемые модификации, например,
+        юмористические вставки или слова, которые даже.Есть много вариантов Lorem Ipsum, но большинство из них имеет не
+        всегда приемлемые модификации, например, юмористические вставки или слова, которые даже.
+      </p>
     </div>
   </div>
 </template>
+
 <script>
-import Card from "~/components/Card";
-import ZCard from "~/components/ZCard";
-export default {
-  components: {
-    Card,
-    ZCard
+  export default {
+    name: "About"
   }
-};
 </script>
+
 <style lang="scss" scoped>
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+  .about {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-style: normal;
+    color: var(--color_text);
+  }
+
+  .text {
+    color: var(--color_text);
+    max-width: 700px;
+  }
 </style>

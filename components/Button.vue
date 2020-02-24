@@ -126,4 +126,5 @@ export default {
 .text-shadow {
   text-shadow: -4px -4px 5px #ffffff, 4px 3px 5px rgba(0, 0, 0, 0.15);
 }
+
 </style>

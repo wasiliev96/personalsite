@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <AppBar />
+    <AppBar/>
     <div class="page">
-      <NavigationDrawer />
+      <NavigationDrawer/>
       <Page>
       </Page>
     </div>
@@ -10,28 +10,29 @@
 </template>
 
 <script>
-import NavigationDrawer from "~/components/NavigationDrawer";
-import AppBar from "~/components/AppBar";
-import Page from "~/components/Page";
-export default {
-  components: {
-    NavigationDrawer,
-    AppBar,
-    Page
-  }
-};
+  import NavigationDrawer from "~/components/NavigationDrawer";
+  import AppBar from "~/components/AppBar";
+  import Page from "~/components/Page";
+
+  export default {
+    components: {
+      NavigationDrawer,
+      AppBar,
+      Page
+    }
+  };
 </script>
 
 <style>
-.container {
-  margin: 120px auto;
-  
-  min-height: 100vh;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-}
-.page {
-  display: flex;
-}
+  .container
+  {
+    margin: 120px auto;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .page
+  {
+    display: flex;
+  }
 </style>

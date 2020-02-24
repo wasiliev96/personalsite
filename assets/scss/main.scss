@@ -12,6 +12,7 @@
   --transition_short: 0.15s;
   --transition_long: 0.55s;
 }
+
 // hide scrollbar
 // html {
 //   overflow: scroll;
@@ -29,6 +30,7 @@ body {
   background-color: var(--color_secondary);
   color: var(--color_text);
 }
+
 body,
 button,
 a,
@@ -36,10 +38,12 @@ input {
   font-family: var(--fontface_primary);
   font-size: var(--font_base);
 }
+
 button,
 a {
   cursor: pointer;
 }
+
 html {
   font-family: var(--fontface_primary);
   line-height: var(--line_height);
@@ -57,6 +61,48 @@ html {
   margin: 0;
   user-select: none;
 }
+
 *:focus {
   outline: none;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 2.8rem;
+  margin-bottom: 30px;
+}
+
+//Page transition
+.page-enter-active, .page-leave-active {
+  transition: opacity .3s
+}
+
+.page-enter, .page-leave-active {
+  opacity: 0
+}
+
+.bounce-enter-active {
+  animation: opacity-in .3s;
+}
+
+.bounce-leave-active {
+  animation: opacity-out .3s;
+}
+
+@keyframes opacity-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes opacity-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
