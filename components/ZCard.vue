@@ -16,11 +16,11 @@
     </div>
     <div class="card-footer">
       <Button icon mini>
-        <font-awesome-icon :icon="['fab','github']"/>
+        <img :src="gitHubIcon" alt="" class="icon">
       </Button>
       <Button text="Read more" centered bold></Button>
       <Button icon mini>
-        <font-awesome-icon :icon="['fas','share-alt']"/>
+        <img :src="shareIcon" alt="" class="icon">
       </Button>
     </div>
   </div>
@@ -35,6 +35,8 @@
     },
     data() {
       return {
+        shareIcon: require('~/assets/icons/share.svg'),
+        gitHubIcon: require('~/assets/icons/github.svg'),
         src: 'http://via.placeholder.com/350x150',
         loaded: false,
       }
@@ -133,9 +135,15 @@
     padding: 30px 30px 30px;
     border-radius: 0 0 13px 30px;
 
+    img {
+      height: 40px;
+      object-fit: cover;
+    }
+
     button {
       font-size: 18px;
       margin: 0 5px;
+      padding: 1.4em 0.5em;
     }
   }
 
