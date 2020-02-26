@@ -24,7 +24,14 @@
     </div>
     <div class="footer">
       <div class="navigation">
-        <span class="bullet" v-for="(post, index) in posts" v-bind:key="post.id">{{index}}</span>
+        <span
+          v-for="(post, index) in posts"
+          :key="post.id"
+          :class="[{'active':index===visiblePost},'bullet']"
+          @click="changePost(index)"
+        >
+          {{index}}
+        </span>
       </div>
     </div>
   </div>
@@ -44,6 +51,10 @@
         if (index === this.visiblePost) classes.push('visible');
         console.log(classes);
         return classes;
+      },
+      changePost(index) {
+        this.visiblePost = index;
+        window.scrollTo(0, 0);
       }
     },
     data() {
@@ -58,9 +69,15 @@
           },
           {
             title: 'SOme another cool post title',
-            image: "https://picsum.photos/1200/500",
+            image: "https://picsum.photos/1202/502",
             description: 'This is a small image descriotion',
-            text: "  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi culpa, ea error excepturi inventore maxime quisquam reiciendis rem ullam. Accusamus aliquam aliquid amet architecto assumenda delectus dolor dolorem eaque eius eos esse est eveniet exercitationem hic id in inventore iusto labore nesciunt numquam, quod quos reiciendis repellendus temporibus vero? Adipisci, aliquam animi aperiam autem cum dolorem dolores dolorum et eveniet exercitationem expedita fuga fugit harum in ipsam labore laudantium molestiae necessitatibus nulla odit omnis quo quod quos ratione recusandae reiciendis repellendus repudiandae sapiente similique sit tenetur velit veritatis voluptatem? Deleniti fugiat incidunt minus nostrum perspiciatis quae quia ullam unde voluptas."
+            text: "  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi culpa, ea error excepturi inventore maxime quisquam reiciendis rem ullam. Accusamus aliquam aliquid amet architecto assumenda delectus dolor dolorem eaque eius eos esse est eveniet exercitationem hic id in inventore iusto labore nesciunt numquam, quod quos reiciendis repellendus temporibus vero? Adipisci, aliquam animi aperiam autem cum dolorem dolores dolorum et eveniet exercitationem expedita fuga fugit harum in ipsam labore laudantium molestiae necessitatibus nulla odit omnis quo quod quos ratione recusandae reiciendis repellendus repudiandae sapiente similique sit tenetur velit veritatis voluptatem? Deleniti fugiat incidunt minus nostrum perspiciatis quae quia ullam unde voluptasa."
+          },
+          {
+            title: 'SOme alse cool post title',
+            image: "https://picsum.photos/1205/502",
+            description: 'This is a small image descriotion',
+            text: "  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi culpa, ea error excepturi inventore maxime quisquam reiciendis rem ullam. Accusamus aliquam aliquid amet architecto assumenda delectus dolor dolorem eaque eius eos esse est eveniet exercitationem hic id in inventore iusto labore nesciunt numquam, quod quos reiciendis repellendus temporibus vero? Adipisci, aliquam animi aperiam autem cum dolorem dolores dolorum et eveniet exercitationem expedita fuga fugit harum in ipsam labore laudantium molestiae necessitatibus nulla odit omnis quo quod quos ratione recusandae reiciendis repellendus repudiandae sapiente similique sit tenetur velit veritatis voluptatem? Deleniti fugiat incidunt minus nostrum perspiciatis quae quia ullam unde voluptasar."
           },
         ]
       }
@@ -88,14 +105,23 @@
   }
 
   .post {
-    display: block;
     width: 100%;
-    min-height: 600px;
     margin: 0 auto;
-    visibility: hidden;
+    display: none;
+    opacity: 0;
 
     &.visible {
-      visibility: visible;
+      display: block;
+      animation: postFadeIn ease var(--transition_long) forwards;
+    }
+  }
+
+  @keyframes postFadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 
@@ -145,6 +171,7 @@
       height: 600px;
       z-index: -1;
       background-color: var(--color_secondary);
+      border-radius: 13px 13px 0 0;
 
       img {
         object-fit: cover;
@@ -183,7 +210,9 @@
       width: 100%;
 
       p {
-        max-width: 800px;
+        max-width: 1200px;
+        text-align: left;
+        margin: 20px;
 
         &:first-letter {
           font-size: 1.4em;
@@ -201,27 +230,47 @@
 
   /*Navigation*/
   .footer {
-    width: 100%;
+    height: 60px;
+    padding: 0 30px;
+    border-radius: 13px 13px 0 0;
+    display: inline-block;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--color_secondary);
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.15), -10px -10px 15px rgba(0, 0, 0, 0.15);
   }
 
   .navigation {
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 0;
     font-weight: bold;
 
     .bullet {
+      display: flex;
+      align-items: center;
+      height: 100%;
       cursor: pointer;
       font-size: 18px;
       color: var(--color_main);
       text-shadow: -4px -4px 5px #FFFFFF, 4px 3px 5px rgba(0, 0, 0, 0.15);
       padding: 7px;
-      transition: text-shadow var(--transition_short), filter var(--transition_long);
+      will-change: text-shadow, filter, font-size;
+      transition: text-shadow var(--transition_short), filter var(--transition_long), font-size var(--transition_base);
       filter: hue-rotate(0deg);
 
       &.active {
         font-size: 36px;
+        color: #D29AFD;
+
+        &:hover {
+          filter: none;
+          text-shadow: -4px -4px 5px #FFFFFF, 4px 3px 5px rgba(0, 0, 0, 0.15);
+          cursor: auto;
+        }
       }
 
       &:hover {
@@ -238,6 +287,7 @@
 
   .fade-enter-active {
     transition: opacity var(--transition_base);
+    will-change: opacity;
   }
 
   .fade-enter-to {

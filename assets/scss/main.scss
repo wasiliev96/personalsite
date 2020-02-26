@@ -75,19 +75,19 @@ h1 {
 
 //Page transition
 .page-enter-active, .page-leave-active {
-  transition: opacity .3s
+  transition: opacity var(--transition_base);
 }
 
 .page-enter, .page-leave-active {
-  opacity: 0
+  opacity: 0;
 }
 
 .bounce-enter-active {
-  animation: opacity-in .3s;
+  animation: opacity-in var(--transition_base);
 }
 
 .bounce-leave-active {
-  animation: opacity-out .3s;
+  animation: opacity-out var(--transition_base);
 }
 
 @keyframes opacity-in {

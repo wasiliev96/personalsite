@@ -8,6 +8,12 @@
         </Button>
       </nuxt-link>
     </div>
+    <div class="social">
+      <a v-for="link in links" v-bind:key="link.id" :href="link.url" :target="link.target">
+        <img :src="link.icon" alt="" class="icon">
+        <span class="href">{{link.text}}</span>
+      </a>
+    </div>
   </div>
 </template>
 <script>
@@ -21,6 +27,27 @@
     },
     data() {
       return {
+        links: [
+          {
+            text: 'wasiliev',
+            icon: require('~/assets/icons/plane.svg'),
+            url: 'tg://resolve?domain=wasiliev',
+            target: '_self'
+          },
+          {
+            text: 'wasiliev96',
+            icon: require('~/assets/icons/instagram.svg'),
+            url: 'https://www.instagram.com/wasiliev96/',
+            target: '_blank'
+          },
+          {
+            text: 'wasiliev.cloud',
+            icon: require('~/assets/icons/google-plus.svg'),
+            url: 'mailto:wasiliev.cloud@gmail.com',
+            target: '_blank'
+          }
+        ],
+
         buttons: [
           {
             text: "About",
@@ -41,39 +68,7 @@
             text: "Projects",
             icon: require('~/assets/icons/rocket.svg'),
             component: '/projects'
-          },
-          // {
-          //   text: "Frequently Contacted",
-          //   icon: ["fas", "redo"]
-          // },
-          // {
-          //   text: "Duplicates",
-          //   icon: ["far", "copy"]
-          // },
-          // {
-          //   text: "Labels",
-          //   icon: ["fas", "chevron-up"]
-          // },
-          // {
-          //   text: "Create label",
-          //   icon: ["fas", "plus"]
-          // },
-          // {
-          //   text: "More",
-          //   icon: ["fas", "chevron-down"]
-          // },
-          // {
-          //   text: "More",
-          //   icon: ["fas", "cog"]
-          // },
-          // {
-          //   text: "Help",
-          //   icon: ["fas", "question"]
-          // },
-          // {
-          //   text: "Download",
-          //   icon: ["fas", "download"]
-          // }
+          }
         ]
       };
     }
@@ -97,6 +92,13 @@
     background-color: var(--color_secondary);
   }
 
+  .drawer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   a {
     text-decoration: none;
   }
@@ -109,5 +111,67 @@
     box-shadow: 0 0 0 #FFFFFF, 0 0 0 #FFFFFF,
     inset -2px -2px 4px rgba(255, 255, 255, 0.3),
     inset 2px 2px 4px rgba(0, 0, 0, 0.15);
+  }
+
+  .social {
+    margin-top: 90px;
+    margin-bottom: 40px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    a {
+      position: relative;
+      margin: 0 20px;
+      padding: 0 0 0 10px;
+      display: flex;
+      align-items: center;
+      color: var(--color_main);
+      font-weight: bold;
+      box-shadow: 0 0 0 #FFFFFF, 0 0 0 rgba(0, 0, 0, 0.15),
+      inset 0 0 0 rgba(255, 255, 255, 0.3), inset 0 0 0 rgba(0, 0, 0, 0.15);
+      transition: box-shadow var(--transition_short);
+
+      &:after {
+        position: absolute;
+        left: 0;
+        height: 0;
+        width: 100%;
+        content: '';
+        display: block;
+        border-left: 2px solid transparent;
+        border-right: 2px solid transparent;
+        filter: hue-rotate(0deg);
+        transition: all var(--transition_base);
+      }
+
+      img {
+        margin: 0 20px 0 0;
+        width: 40px;
+        height: 40px;
+      }
+
+      .href {
+        transition: color var(--transition_long);
+      }
+
+      &:hover {
+        box-shadow: 0 0 0 #FFFFFF, 0 0 0 #FFFFFF,
+        inset -1px -1px 5px rgba(255, 255, 255, 0.3),
+        inset 1px 1px 5px rgba(0, 0, 0, 0.15);
+
+        .href {
+          color: #D29AFD;
+        }
+
+        &:after {
+          filter: hue-rotate(405deg);
+          border-left: 2px solid var(--color_main);
+          border-right: 2px solid var(--color_main);
+          height: 100%;
+        }
+      }
+    }
   }
 </style>

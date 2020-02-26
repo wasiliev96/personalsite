@@ -26,7 +26,7 @@
 <style>
   .container
   {
-    margin: 120px auto;
+    margin: 50px auto;
     display: flex;
     justify-content: flex-start;
   }
