@@ -11,6 +11,37 @@
   --transition_base: 0.35s;
   --transition_short: 0.15s;
   --transition_long: 0.55s;
+  //Media queries
+  //Media queries
+  @media screen and (min-width: 576px) {
+    :root {
+      /* small vars */
+    }
+  }
+  @media screen and (min-width: 768px) {
+    :root {
+      /* medium vars */
+      --social-display: none;
+      --navigation-drawer_margin: 0;
+      --navigation-drawer_left:0;
+      --navigation-drawer_bottom:0;
+      --navigation-drawer_top: 0;
+      --navigation-drawer_width: 100%;
+      --navigation-drawer_justifycontent:flex-start;
+      --navigation-drawer_border-radius: 30px 30px 0 0;
+
+    }
+  }
+  @media screen and (min-width: 992px) {
+    :root {
+      /* large vars */
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    :root {
+      /* extra-large vars */
+    }
+  }
 }
 
 // hide scrollbar
@@ -107,45 +138,3 @@ h1 {
     opacity: 0;
   }
 }
-
-
-//Media queries
-
-$breakpoints: (
-  small: (min-width: 576px),
-  medium: (min-width: 768px),
-  large: (min-width: 992px),
-  extra-large:(min-width: 1200px)
-);
-
-/// Управление отзывчивостью.
-/// @access public
-/// @param {String} $breakpoint - точка останова
-/// @requires $breakpoints
-@mixin respond-to($breakpoint) {
-  $raw-query: map-get($breakpoints, $breakpoint);
-
-  @if $raw-query {
-    $query: if(
-        type-of($raw-query) == 'string',
-        unquote($raw-query),
-        inspect($raw-query)
-    );
-
-    @media #{$query} {
-      @content;
-    }
-  } @else {
-    @error 'Не указано значение для `#{$breakpoint}`. '
-       + 'Пожалуйста, убедитесь, что точка останова объявлена в карте `$breakpoints`.';
-  }
-}
-
-//using
-//.foo {
-//  color: red;
-//
-//  @include respond-to('medium') {
-//    color: blue;
-//  }
-//}

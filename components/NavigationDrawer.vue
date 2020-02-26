@@ -1,5 +1,9 @@
 <template>
-  <div class="navigation-drawer">
+  <div :class="[drawerCollapse?'small':'','navigation-drawer']">
+    <input class="drawer-checkbox" type="checkbox" id="drawerToggle" v-model="drawerCollapse"/>
+    <label class="drawer-tumbler" for="drawerToggle">
+      <span></span><span></span><span></span>
+    </label>
     <PersonCard/>
     <div class="drawer">
       <nuxt-link v-for="button in buttons" v-bind:key="button.id" :to="button.component">
@@ -27,6 +31,7 @@
     },
     data() {
       return {
+        drawerCollapse: false,
         links: [
           {
             text: 'wasiliev',
@@ -75,6 +80,8 @@
   };
 </script>
 <style lang="scss" scoped>
+  @import '../assets/scss/queries';
+
   .navigation-drawer {
     display: flex;
     flex-direction: column;
@@ -90,6 +97,7 @@
     box-shadow: 6px 4px 30px rgba(0, 0, 0, 0.15);
     padding-bottom: 20px;
     background-color: var(--color_secondary);
+    transition: top var(--transition_long);
   }
 
   .drawer {
@@ -97,6 +105,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .drawer-checkbox {
+    display: none;
   }
 
   a {
@@ -172,6 +184,44 @@
           height: 100%;
         }
       }
+    }
+  }
+
+  .drawer-tumbler {
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+
+    span {
+      display: block;
+      width: 40px;
+      height: 0;
+      border-bottom: 1px solid var(--color_text);
+      padding: 6px;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .social {
+      display: none;
+    }
+    .navigation-drawer {
+      margin: 0;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      top: 0;
+      justify-content: flex-start;
+      border-radius: 30px 30px 0 0;
+
+      &.small {
+        top: calc(100% - 75px);
+      }
+
     }
   }
 </style>
