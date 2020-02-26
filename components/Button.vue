@@ -72,7 +72,7 @@
       //     drop-shadow(4px 4px 5px rgba(0, 0, 0, 0.15));
       // }
       span {
-        filter: hue-rotate(405deg);
+        /*filter: hue-rotate(405deg);*/
       }
 
       img {

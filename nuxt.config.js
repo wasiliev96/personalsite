@@ -1,7 +1,7 @@
 
 export default {
   router: {
-    base: '/./'
+    // base: '/./'
   },
   devServer: {
     port: 3333, // default: 3000

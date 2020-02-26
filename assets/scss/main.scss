@@ -107,3 +107,45 @@ h1 {
     opacity: 0;
   }
 }
+
+
+//Media queries
+
+$breakpoints: (
+  small: (min-width: 576px),
+  medium: (min-width: 768px),
+  large: (min-width: 992px),
+  extra-large:(min-width: 1200px)
+);
+
+/// Управление отзывчивостью.
+/// @access public
+/// @param {String} $breakpoint - точка останова
+/// @requires $breakpoints
+@mixin respond-to($breakpoint) {
+  $raw-query: map-get($breakpoints, $breakpoint);
+
+  @if $raw-query {
+    $query: if(
+        type-of($raw-query) == 'string',
+        unquote($raw-query),
+        inspect($raw-query)
+    );
+
+    @media #{$query} {
+      @content;
+    }
+  } @else {
+    @error 'Не указано значение для `#{$breakpoint}`. '
+       + 'Пожалуйста, убедитесь, что точка останова объявлена в карте `$breakpoints`.';
+  }
+}
+
+//using
+//.foo {
+//  color: red;
+//
+//  @include respond-to('medium') {
+//    color: blue;
+//  }
+//}
