@@ -34,5 +34,6 @@
   .page
   {
     display: flex;
+    width: 100%;
   }
 </style>
