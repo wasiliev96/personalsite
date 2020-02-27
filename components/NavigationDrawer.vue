@@ -1,9 +1,5 @@
 <template>
-  <div :class="[drawerCollapse?'small':'','navigation-drawer']">
-    <input class="drawer-checkbox" type="checkbox" id="drawerToggle" v-model="drawerCollapse"/>
-    <label class="drawer-tumbler" for="drawerToggle">
-      <span></span><span></span><span></span>
-    </label>
+  <div :class="[$store.state.isDrawerCollapsed?'hidden':'','navigation-drawer']">
     <PersonCard/>
     <div class="drawer">
       <nuxt-link v-for="button in buttons" v-bind:key="button.id" :to="button.component">
@@ -29,6 +25,12 @@
       Button,
       PersonCard
     },
+    methods: {
+      toggleDrawer() {
+        alert(1)
+      }
+    },
+    computed: {},
     data() {
       return {
         drawerCollapse: false,
@@ -98,13 +100,17 @@
     padding-bottom: 20px;
     background-color: var(--color_secondary);
     transition: top var(--transition_long);
+    overflow-x: hidden;
   }
 
   .drawer {
-    width: 100%;
+    width: calc(100% + 40px);
+    padding: 0 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: scroll;
+
   }
 
   .drawer-checkbox {
@@ -187,25 +193,7 @@
     }
   }
 
-  .drawer-tumbler {
-    cursor: pointer;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-
-    span {
-      display: block;
-      width: 40px;
-      height: 0;
-      border-bottom: 1px solid var(--color_text);
-      padding: 6px;
-    }
-  }
-
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 768px) {
     .social {
       display: none;
     }
@@ -214,12 +202,18 @@
       left: 0;
       bottom: 0;
       width: 100%;
-      top: 0;
+      top: 60px;
+      border-radius: unset;
       justify-content: flex-start;
-      border-radius: 30px 30px 0 0;
+      transform: translate(0, 0);
+      transition: transform var(--transition_base) ease;
 
-      &.small {
-        top: calc(100% - 75px);
+      .person-card {
+        border-radius: unset;
+      }
+
+      &.hidden {
+        transform: translate(0, 100%);
       }
 
     }

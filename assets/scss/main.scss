@@ -11,130 +11,101 @@
   --transition_base: 0.35s;
   --transition_short: 0.15s;
   --transition_long: 0.55s;
-  //Media queries
-  //Media queries
-  @media screen and (min-width: 576px) {
-    :root {
-      /* small vars */
-    }
+  // hide scrollbar
+  //html {
+  //  overflow: scroll;
+  //  overflow-x: hidden;
+  //}
+  //
+  //::-webkit-scrollbar {
+  //  width: 0px; /* Remove scrollbar space */
+  //  background: transparent; /* Optional: just make scrollbar invisible */
+  //}
+  //
+  ///* Optional: show position indicator in red */
+  //::-webkit-scrollbar-thumb {
+  //  background: #ff0000;
+  //}
+
+  body {
+    background-color: var(--color_secondary);
+    color: var(--color_text);
+    line-height: 1.5;
   }
-  @media screen and (min-width: 768px) {
-    :root {
-      /* medium vars */
-      --social-display: none;
-      --navigation-drawer_margin: 0;
-      --navigation-drawer_left:0;
-      --navigation-drawer_bottom:0;
-      --navigation-drawer_top: 0;
-      --navigation-drawer_width: 100%;
-      --navigation-drawer_justifycontent:flex-start;
-      --navigation-drawer_border-radius: 30px 30px 0 0;
 
-    }
+  body,
+  button,
+  a,
+  input {
+    font-family: var(--fontface_primary);
+    font-size: var(--font_base);
   }
-  @media screen and (min-width: 992px) {
-    :root {
-      /* large vars */
-    }
+
+  button,
+  a {
+    cursor: pointer;
   }
-  @media screen and (min-width: 1200px) {
-    :root {
-      /* extra-large vars */
-    }
+
+  html {
+    font-family: var(--fontface_primary);
+    line-height: var(--line_height);
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
   }
-}
 
-// hide scrollbar
-// html {
-//   overflow: scroll;
-//   overflow-x: hidden;
-// }
-// ::-webkit-scrollbar {
-//   width: 0px; /* Remove scrollbar space */
-//   background: transparent; /* Optional: just make scrollbar invisible */
-// }
-// /* Optional: show position indicator in red */
-// ::-webkit-scrollbar-thumb {
-//   background: #ff0000;
-// }
-body {
-  background-color: var(--color_secondary);
-  color: var(--color_text);
-  line-height: 1.5;
-}
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+    margin: 0;
+    user-select: none;
+  }
 
-body,
-button,
-a,
-input {
-  font-family: var(--fontface_primary);
-  font-size: var(--font_base);
-}
+  *:focus {
+    outline: none;
+  }
 
-button,
-a {
-  cursor: pointer;
-}
+  h1 {
+    font-weight: bold;
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+  }
 
-html {
-  font-family: var(--fontface_primary);
-  line-height: var(--line_height);
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
+  //Page transition
+  .page-enter-active, .page-leave-active {
+    transition: opacity var(--transition_base);
+  }
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
-  user-select: none;
-}
-
-*:focus {
-  outline: none;
-}
-
-h1 {
-  font-weight: bold;
-  font-size: 2.8rem;
-  margin-bottom: 30px;
-}
-
-//Page transition
-.page-enter-active, .page-leave-active {
-  transition: opacity var(--transition_base);
-}
-
-.page-enter, .page-leave-active {
-  opacity: 0;
-}
-
-.bounce-enter-active {
-  animation: opacity-in var(--transition_base);
-}
-
-.bounce-leave-active {
-  animation: opacity-out var(--transition_base);
-}
-
-@keyframes opacity-in {
-  0% {
+  .page-enter, .page-leave-active {
     opacity: 0;
   }
-  100% {
-    opacity: 1;
-  }
-}
 
-@keyframes opacity-out {
-  0% {
-    opacity: 1;
+  .bounce-enter-active {
+    animation: opacity-in var(--transition_base);
   }
-  100% {
-    opacity: 0;
+
+  .bounce-leave-active {
+    animation: opacity-out var(--transition_base);
+  }
+
+  @keyframes opacity-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes opacity-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
   }
 }

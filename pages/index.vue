@@ -25,6 +25,7 @@
 
 <style lang="scss" scoped>
   .about {
+    padding: 0 20px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;

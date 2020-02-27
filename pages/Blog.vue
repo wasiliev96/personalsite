@@ -299,4 +299,10 @@
   }
 
   /*End image fade in*/
+
+  @media screen and (max-width: 768px) {
+.blog{
+  padding-top: 0;
+}
+  }
 </style>
