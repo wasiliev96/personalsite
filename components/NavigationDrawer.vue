@@ -3,7 +3,7 @@
     <PersonCard/>
     <div class="drawer">
       <nuxt-link v-for="button in buttons" v-bind:key="button.id" :to="button.component">
-        <Button :text="button.text">
+        <Button :text="button.text" v-on:click.native="$store.commit('toggleDrawer')">
           <img :src="button.icon" alt="" class="icon">
         </Button>
       </nuxt-link>
@@ -206,7 +206,7 @@
       border-radius: unset;
       justify-content: flex-start;
       transform: translate(0, 0);
-      transition: transform var(--transition_base) ease;
+      transition: transform var(--transition_long) ease;
 
       .person-card {
         border-radius: unset;

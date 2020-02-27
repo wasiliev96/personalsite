@@ -31,6 +31,7 @@
     background-color: var(--color_secondary);
     color: var(--color_text);
     line-height: 1.5;
+    overflow-y: scroll;
   }
 
   body,
@@ -76,7 +77,7 @@
 
   //Page transition
   .page-enter-active, .page-leave-active {
-    transition: opacity var(--transition_base);
+    transition: opacity var(--transition_short);
   }
 
   .page-enter, .page-leave-active {
@@ -84,11 +85,11 @@
   }
 
   .bounce-enter-active {
-    animation: opacity-in var(--transition_base);
+    animation: opacity-in var(--transition_short);
   }
 
   .bounce-leave-active {
-    animation: opacity-out var(--transition_base);
+    animation: opacity-out var(--transition_short);
   }
 
   @keyframes opacity-in {

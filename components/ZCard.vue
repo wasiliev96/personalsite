@@ -60,6 +60,10 @@
     will-change: box-shadow;
     transition: box-shadow var(--transition_base);
 
+    .image {
+      object-fit: cover;
+    }
+
     &:hover {
       box-shadow: 0 0 0 rgba(255, 255, 255, 0), 0 0 0 rgba(0, 0, 0, 0);
 
@@ -147,4 +151,20 @@
     }
   }
 
+  @media screen and (max-width: 1200px) {
+    .card {
+      margin: 0 0 20px 0;
+      max-width: 100%;
+      width: 100%;
+      border-radius: 0 80px 0 0;
+
+      .card-header {
+        height: 40vh;
+
+        img, .image-placeholder {
+          height: 40vh;
+        }
+      }
+    }
+  }
 </style>

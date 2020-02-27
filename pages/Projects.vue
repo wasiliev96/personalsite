@@ -1,6 +1,5 @@
 <template>
   <div class="projects">
-    <h1>Projects page</h1>
     <div class="gallery">
       <div class="row">
         <ZCard url="https://picsum.photos/480/320"/>
@@ -44,5 +43,19 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  @media screen and (max-width: 1200px) {
+    .projects{
+      padding: 0;
+    }
+    .gallery {
+      .row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    }
   }
 </style>
