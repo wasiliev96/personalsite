@@ -26,14 +26,22 @@
 <style>
   .container
   {
-    margin: 50px auto;
+    margin: 0;
     display: flex;
     justify-content: flex-start;
   }
 
   .page
   {
+    margin-top: 60px;
+    margin-left: 320px;
+    padding: 20px 0 0 0;
     display: flex;
     width: 100%;
+  }
+  @media screen and (max-width: 768px) {
+    .page{
+      margin: 0;
+    }
   }
 </style>

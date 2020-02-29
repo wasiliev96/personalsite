@@ -6,8 +6,7 @@
 </template>
 <style lang="scss" scoped>
   .wrapper {
-    margin-left: 320px;
-    padding: 50px 0 0 0;
+
     flex-grow: 1;
   }
 
